@@ -1,6 +1,0 @@
-URL: /
-Timestamp: Sun Jun 06 2021 15:59:30 GMT-0700 (Pacific Daylight Time)
-
-URL: /favicon.ico
-Timestamp: Sun Jun 06 2021 15:59:31 GMT-0700 (Pacific Daylight Time)
-
