@@ -32,7 +32,23 @@ personal information, and create a list of their favorite movies.
               <td>/movies</td>
               <td>GET</td>
               <td>None</td>
-              <td>A JSON object holding data about all the movies</td>
+              <td>A JSON object holding data about all the movies: <br>
+                { <br>
+                  Title: "Parasite", <br>
+                  Description: “The struggling Kim family sees an opportunity when the son starts working for the wealthy Park family. Soon, all of them find a way to work within the same household and start living a parasitic life.", <br>
+                  Genre: { <br>
+                    Name: "Thriller", <br>
+                    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience." <br>
+                  }, <br>
+                  Director: { <br>
+                    Name: "Bong Joon Ho", <br>
+                    Bio: "Bong Joon Ho is a South Korean film director, producer and screenwriter.", <br>
+                    Birth: "1969" <br>
+                  }, <br>
+                  ImagePath: "parasite.png", <br>
+                  Featured: true <br>
+                }
+              </td>
             </tr>
             <tr>
               <td>Get data about a single movie by title</td>
@@ -40,12 +56,21 @@ personal information, and create a list of their favorite movies.
               <td>GET</td>
               <td>None</td>
               <td>A JSON object holding data about a single movie, containing a name, description, genre, and image URL: <br>
-              { <br>
-                name : "Spirited Away", <br>
-                description : "In this animated feature by noted Japanese director Hayao Miyazaki, 10-year-old Chihiro (Rumi Hiiragi) and her parents (Takashi Naitô, Yasuko Sawaguchi) stumble upon a seemingly abandoned amusement park. After her mother and father are turned into giant pigs, Chihiro meets the mysterious Haku (Miyu Irino), who explains that the park is a resort for supernatural beings who need a break from their time spent in the earthly realm, and that she must work there to free herself and her parents.", <br>
-                genre : "Fantasy", <br>
-                imageURL : "spiritedaway.jpg" <br>
-              }
+                { <br>
+                  Title: "Guardians of the Galaxy", <br>
+                  Description: "Peter escapes from the planet Morag with a valuable orb that Ronan the Accuser wants. He eventually forms a group with unwilling heroes to stop Ronan.”, <br>
+                  Genre: { <br>
+                      Name: "Action", <br>
+                      Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases." <br>
+                  }, <br>
+                  Director: { <br>
+                      Name: "James Gunn", <br>
+                      Bio: "James Francis Gunn Jr. is an American film director, actor, screenwriter and former musician.", <br>
+                      Birth: "1966" <br>
+                  }, <br>
+                  ImagePath: "guardiansofthegalaxy", <br>
+                  Featured: false <br>
+                }
               </td>
             </tr>  
             <tr>
@@ -53,7 +78,12 @@ personal information, and create a list of their favorite movies.
               <td>/genres/[Name]</td>
               <td>GET</td>
               <td>None</td>
-              <td>A JSON object holding data about a genre, like a description</td>
+              <td>A JSON object holding data about a genre, like a description: <br>
+                { <br>
+                  Name: "Action", <br>
+                  Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases." <br>
+                }
+              </td>
             </tr> 
             <tr>
               <td>Get data about a director by name</td>
@@ -61,12 +91,11 @@ personal information, and create a list of their favorite movies.
               <td>GET</td>
               <td>None</td>
               <td>A JSON object holding data about a director, containing a bio, birth year, and death year, structured like: <br>
-                { <br>
-                  name : "Hayao Miyazaki", <br>
-                  bio : "Hayao Miyazaki is a Japanese animator, director, producer, screenwriter, author, and manga artist.", <br>
-                  birthYear : "1941-01-05", <br>
-                  deathYear : "N/A" <br>
-                }
+                  { <br>
+                    Name: "Bong Joon Ho", <br>
+                    Bio: "Bong Joon Ho is a South Korean film director, producer and screenwriter.", <br>
+                    Birth: "1969" <br>
+                  },
               </td>
             </tr> 
             <tr>
@@ -74,21 +103,22 @@ personal information, and create a list of their favorite movies.
               <td>/users</td>
               <td>POST</td>
               <td>A JSON object holding data about the user to add, structured like: <br>
-              { <br>
-                username : "cathy", <br>
-                password : "********", <br>
-                email : "cathy@email.com", <br>
-                birthdate : "2000-02-02" <br>
-              }
+                { <br>
+                  Username: "cathy", <br>
+                  Password: "test123", <br>
+                  Email: "cathy@email.com", <br>
+                  Birthday: "2000-02-02" <br>
+                  FavoriteMovies: [] <br>
+                }
               </td>
               <td>A JSON object holding data about the user that was added, including an ID: <br>
-              { <br>
-                id : 1, <br>
-                username : "cathy", <br>
-                password : "********", <br>
-                email : "cathy@email.com", <br>
-                birthdate : "2000-02-02" <br>
-              } </td>
+                { <br>
+                  id : 1, <br>
+                  Username: "cathy", <br>
+                  Password: "test123", <br>
+                  Email: "cathy@email.com", <br>
+                  Birthday: "2000-02-02" <br>
+                } </td>
             </tr> 
             <tr>
               <td>Update a user's information</td>
@@ -99,14 +129,23 @@ personal information, and create a list of their favorite movies.
             </tr> 
             <tr>
               <td>Add a movie to list of favorites</td>
-              <td>/users/[Username]/favorites</td>
+              <td>/users/[Username]/movies/[MovieID]</td>
               <td>POST</td>
               <td>A JSON object holding data about the movie to add, structured like: <br>
                 { <br>
-                  name : "Spirited Away", <br>
-                  description : "In this animated feature by noted Japanese director Hayao Miyazaki, 10-year-old Chihiro (Rumi Hiiragi) and her parents (Takashi Naitô, Yasuko Sawaguchi) stumble upon a seemingly abandoned amusement park. After her mother and father are turned into giant pigs, Chihiro meets the mysterious Haku (Miyu Irino), who explains that the park is a resort for supernatural beings who need a break from their time spent in the earthly realm, and that she must work there to free herself and her parents.", <br>
-                  genre : "Fantasy", <br>
-                 imageURL : "spiritedaway.jpg" <br>
+                  Title: "Legally Blonde", <br>
+                  Description: "Elle's boyfriend breaks up with her for a smarter girl as he plans to become a politician and joins Harvard law school. Elle gets enrolled in the same school in an effort to teach him a lesson.", <br>
+                  Genre: { <br>
+                    Name: "Romance", <br>
+                    Description: "Romance films make the romantic love story or the search for a strong and pure love and romance the main plot focus." <br>
+                  }, <br>
+                  Director: { <br>
+                    Name: "Robert Luketic", <br>
+                    Bio: "Robert Luketic is an Australian film director and writer.", <br>
+                    Birth: "1973" <br>
+                  }, <br>
+                  ImagePath: "legallyblonde.png", <br>
+                  Featured: false <br>
                 }
               </td>
               <td>A text message indicating whether the movie was successfully added
@@ -114,7 +153,7 @@ personal information, and create a list of their favorite movies.
             </tr> 
             <tr>
               <td>Remove a movie from list of favorites</td>
-              <td>/users/[Username]/favorites/[Movie]</td>
+              <td>/users/[Username]/movies/[MovieID]</td>
               <td>DELETE</td>
               <td>None</td>
               <td>A text message indicating whether the movie was successfully removed</td>
