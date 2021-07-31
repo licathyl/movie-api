@@ -32,22 +32,24 @@ personal information, and create a list of their favorite movies.
               <td>/movies</td>
               <td>GET</td>
               <td>None</td>
-              <td>A JSON object holding data about all the movies: <br>
-                { <br>
-                  Title: "Parasite", <br>
-                  Description: “The struggling Kim family sees an opportunity when the son starts working for the wealthy Park family. Soon, all of them find a way to work within the same household and start living a parasitic life.", <br>
-                  Genre: { <br>
-                    Name: "Thriller", <br>
-                    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience." <br>
-                  }, <br>
-                  Director: { <br>
-                    Name: "Bong Joon Ho", <br>
-                    Bio: "Bong Joon Ho is a South Korean film director, producer and screenwriter.", <br>
-                    Birth: "1969" <br>
-                  }, <br>
-                  ImagePath: "parasite.png", <br>
-                  Featured: true <br>
-                }
+              <td>A JSON object holding data about all the movies: 
+                <pre>
+{
+  Title: "Parasite",
+  Description: “The struggling Kim family sees an opportunity when the son starts working for the wealthy Park family. Soon, all of them find a way to work within the same household and start living a parasitic life.", 
+  Genre: { 
+    Name: "Thriller", 
+    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience." 
+  }, 
+  Director: { 
+    Name: "Bong Joon Ho", 
+    Bio: "Bong Joon Ho is a South Korean film director, producer and screenwriter.", 
+    Birth: "1969" 
+  }, 
+  ImagePath: "parasite.png", 
+  Featured: true 
+}
+                </pre>
               </td>
             </tr>
             <tr>
@@ -55,22 +57,24 @@ personal information, and create a list of their favorite movies.
               <td>/movies/[Title]</td>
               <td>GET</td>
               <td>None</td>
-              <td>A JSON object holding data about a single movie, containing a name, description, genre, and image URL: <br>
-                { <br>
-                  Title: "Guardians of the Galaxy", <br>
-                  Description: "Peter escapes from the planet Morag with a valuable orb that Ronan the Accuser wants. He eventually forms a group with unwilling heroes to stop Ronan.”, <br>
-                  Genre: { <br>
-                      Name: "Action", <br>
-                      Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases." <br>
-                  }, <br>
-                  Director: { <br>
-                      Name: "James Gunn", <br>
-                      Bio: "James Francis Gunn Jr. is an American film director, actor, screenwriter and former musician.", <br>
-                      Birth: "1966" <br>
-                  }, <br>
-                  ImagePath: "guardiansofthegalaxy", <br>
-                  Featured: false <br>
-                }
+              <td>A JSON object holding data about a single movie, containing a name, description, genre, and image URL: 
+               <pre>
+{ 
+  Title: "Guardians of the Galaxy", 
+  Description: "Peter escapes from the planet Morag with a valuable orb that Ronan the Accuser wants. He eventually forms a group with unwilling heroes to stop Ronan.”, 
+  Genre: { 
+    Name: "Action", 
+    Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases." 
+  }, 
+  Director: { 
+    Name: "James Gunn", 
+    Bio: "James Francis Gunn Jr. is an American film director, actor, screenwriter and former musician.", 
+    Birth: "1966" 
+  }, 
+  ImagePath: "guardiansofthegalaxy", 
+  Featured: false 
+}
+                </pre>
               </td>
             </tr>  
             <tr>
@@ -78,11 +82,13 @@ personal information, and create a list of their favorite movies.
               <td>/genres/[Name]</td>
               <td>GET</td>
               <td>None</td>
-              <td>A JSON object holding data about a genre, like a description: <br>
-                { <br>
-                  Name: "Action", <br>
-                  Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases." <br>
-                }
+              <td>A JSON object holding data about a genre, like a description:
+                <pre>
+{ 
+  Name: "Action", 
+  Description: "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats, rescues and frantic chases." 
+}
+                </pre>
               </td>
             </tr> 
             <tr>
@@ -90,35 +96,42 @@ personal information, and create a list of their favorite movies.
               <td>/directors/[Name]</td>
               <td>GET</td>
               <td>None</td>
-              <td>A JSON object holding data about a director, containing a bio, birth year, and death year, structured like: <br>
-                  { <br>
-                    Name: "Bong Joon Ho", <br>
-                    Bio: "Bong Joon Ho is a South Korean film director, producer and screenwriter.", <br>
-                    Birth: "1969" <br>
-                  },
+              <td>A JSON object holding data about a director, containing a bio, birth year, and death year, structured like: 
+                <pre>  
+{ 
+  Name: "Bong Joon Ho", 
+  Bio: "Bong Joon Ho is a South Korean film director, producer and screenwriter.", 
+  Birth: "1969" 
+}
+                </pre>
               </td>
             </tr> 
             <tr>
               <td>Add a user</td>
               <td>/users</td>
               <td>POST</td>
-              <td>A JSON object holding data about the user to add, structured like: <br>
-                { <br>
-                  Username: "cathy", <br>
-                  Password: "test123", <br>
-                  Email: "cathy@email.com", <br>
-                  Birthday: "2000-02-02" <br>
-                  FavoriteMovies: [] <br>
-                }
+              <td>A JSON object holding data about the user to add, structured like: 
+                <pre>
+{ 
+  Username: "cathy", 
+  Password: "test123", 
+  Email: "cathy@email.com", 
+  Birthday: "2000-02-02" 
+  FavoriteMovies: [] 
+}
+                </pre>
               </td>
-              <td>A JSON object holding data about the user that was added, including an ID: <br>
-                { <br>
-                  id : 1, <br>
-                  Username: "cathy", <br>
-                  Password: "test123", <br>
-                  Email: "cathy@email.com", <br>
-                  Birthday: "2000-02-02" <br>
-                } </td>
+              <td>A JSON object holding data about the user that was added, including an ID: 
+                <pre>
+{ 
+  id : 1, 
+  Username: "cathy", 
+  Password: "test123", 
+  Email: "cathy@email.com", 
+  Birthday: "2000-02-02" 
+} 
+                </pre>
+              </td>
             </tr> 
             <tr>
               <td>Update a user's information</td>
@@ -131,22 +144,24 @@ personal information, and create a list of their favorite movies.
               <td>Add a movie to list of favorites</td>
               <td>/users/[Username]/movies/[MovieID]</td>
               <td>POST</td>
-              <td>A JSON object holding data about the movie to add, structured like: <br>
-                { <br>
-                  Title: "Legally Blonde", <br>
-                  Description: "Elle's boyfriend breaks up with her for a smarter girl as he plans to become a politician and joins Harvard law school. Elle gets enrolled in the same school in an effort to teach him a lesson.", <br>
-                  Genre: { <br>
-                    Name: "Romance", <br>
-                    Description: "Romance films make the romantic love story or the search for a strong and pure love and romance the main plot focus." <br>
-                  }, <br>
-                  Director: { <br>
-                    Name: "Robert Luketic", <br>
-                    Bio: "Robert Luketic is an Australian film director and writer.", <br>
-                    Birth: "1973" <br>
-                  }, <br>
-                  ImagePath: "legallyblonde.png", <br>
-                  Featured: false <br>
-                }
+              <td>A JSON object holding data about the movie to add, structured like: 
+                <pre>
+{ 
+  Title: "Legally Blonde", 
+  Description: "Elle's boyfriend breaks up with her for a smarter girl as he plans to become a politician and joins Harvard law school. Elle gets enrolled in the same school in an effort to teach him a lesson.", 
+  Genre: { 
+    Name: "Romance", 
+    Description: "Romance films make the romantic love story or the search for a strong and pure love and romance the main plot focus." 
+  }, 
+  Director: { 
+    Name: "Robert Luketic", 
+    Bio: "Robert Luketic is an Australian film director and writer.", 
+    Birth: "1973" 
+  }, 
+  ImagePath: "legallyblonde.png", 
+  Featured: false 
+}
+                </pre>
               </td>
               <td>A text message indicating whether the movie was successfully added
               </td>
