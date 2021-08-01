@@ -1,21 +1,23 @@
 const express = require("express"),
   morgan = require("morgan");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const app = express();
 
-const mongoose = require('mongoose');
-const Models = require('./models.js');
+const mongoose = require("mongoose");
+const Models = require("./models.js");
 
 const Movies = Models.Movie;
 const Users = Models.User;
-const Genres = Models.Genre;
-const Directors = Models.Director;
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/myFlixDB", { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(morgan("common"));
+
+let auth = require("./auth")(app);
+const passport = require("passport");
+require("/passport");
 
 app.get("/", (req, res) => {
   res.send("Welcome to myFlix!");
@@ -78,7 +80,7 @@ app.get("/directors/:Name", (req, res) => {
   Email: String,
   Birthday: Date
 }*/
-app.post('/users', (req, res) => {
+app.post("/users", (req, res) => {
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
