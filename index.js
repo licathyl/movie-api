@@ -9,7 +9,11 @@ const Models = require("./models.js");
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect("mongodb://localhost:27017/myFlixDB", { useNewUrlParser: true, useUnifiedTopology: true, });
+// connect to local database
+// mongoose.connect("mongodb://localhost:27017/myFlixDB", { useNewUrlParser: true, useUnifiedTopology: true, });
+
+// connect to MongoDB Atlas database
+mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true, });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
