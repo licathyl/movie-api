@@ -15,7 +15,7 @@ This is the server-side component of a "movies" web application. The web applica
 * Allow users to remove a movie from their list of favorites
 * Allow existing users to deregister
 ## Project Links
-* Project link: https://licathyl.github.io/pokedex-app/
+* GitHub link: https://github.com/licathyl/movie-api.git
 * Public API link: https://cathysflix.herokuapp.com/
 ## Project Dependencies 
 * Javascript
