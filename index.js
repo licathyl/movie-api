@@ -1,6 +1,5 @@
 const express = require("express"),
   morgan = require("morgan");
-const bodyParser = require("body-parser");
 const app = express();
 
 const mongoose = require("mongoose");
@@ -15,8 +14,8 @@ const Users = Models.User;
 // connect to MongoDB Atlas database
 mongoose.connect( process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true, });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan("common"));
 
 const cors = require("cors");
@@ -88,7 +87,33 @@ app.get("/directors/:Name", passport.authenticate("jwt", { session: false }), (r
 app.get("/users", passport.authenticate("jwt", { session: false }), (req, res) => {
   Users.find()
     .then((users) => {
-      res.status(201).json(users);
+      res.json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+  }
+);
+
+// Gets a user by username
+app.get("/users/:Username", passport.authenticate("jwt", { session: false }), (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error: " + err);
+    });
+  }
+);
+
+// Gets a list of a user's favorite movies
+app.get("/users/:Username/movies", passport.authenticate("jwt", { session: false }), (req, res) => {
+  Users.findOne({ Username: req.params.Username })
+    .then((user) => {
+      res.json(user.FavoriteMovies);
     })
     .catch((err) => {
       console.error(err);
